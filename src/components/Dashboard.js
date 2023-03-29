@@ -18,7 +18,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems } from './listitems';
 import Orders from './Orders';
 import MyCard from './MyCard';
-import { Avatar } from '@mui/material';
+import { Avatar, Card, CardActions, CardContent, Button } from '@mui/material';
 
 function Copyright(props) {
     return (
@@ -84,11 +84,22 @@ const mdTheme = createTheme();
 const Dashboard = () => {
     const [open, setOpen] = React.useState(true);
     const [userName, setUser] = React.useState('');
+    const [lastName, setLastname] = React.useState('');
+    const [email, setEmail] = React.useState('');
+    const [phone, setPhone] = React.useState('');
+    const [zipcode, setZipcode] = React.useState('');
+    const [city, setCity] = React.useState('');
+
     const toggleDrawer = () => {
         setOpen(!open);
     };
     React.useEffect(() => {
         setUser(localStorage.getItem('firstName'));
+        setLastname(localStorage.getItem('lastName'));
+        setEmail(localStorage.getItem('email'));
+        setPhone(localStorage.getItem('phone'));
+        setZipcode(localStorage.getItem('zipcode'));
+        setCity(localStorage.getItem('city'));
     });
 
     return (
@@ -165,11 +176,38 @@ const Dashboard = () => {
                                     sx={{
                                         p: 2,
                                         display: 'flex',
-                                        flexDirection: 'column',
+                                        flexDirection: 'row',
                                         height: 240,
                                     }}
                                 >
-                                    <Orders />
+                                    <Avatar alt="Remy Sharp" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                                        sx={{ width: '200px', height: '200px', margin: '10px' }}
+                                    />
+                                    <Card sx={{ minWidth: '300px', alignItems: 'flex-end', alignContent: 'flex-end', marginLeft: '40px' }}>
+                                        <CardContent>
+                                            <Typography  variant="h5" sx={{margin: '7px', marginTop: '20px'}}>
+                                                {userName}  {lastName}
+                                            </Typography>
+                                            <Typography color="text.secondary" sx={{margin: '7px'}}>
+                                                Email: {email}
+                                            </Typography>
+                                            <Typography variant="body2" sx={{margin: '7px'}}>
+                                                Phone: {phone}
+                                            </Typography>
+                                        </CardContent>
+                                    </Card>
+                                    <Card sx={{ minWidth: '300px', alignItems: 'flex-end', alignContent: 'flex-end', marginLeft: '40px' }}>
+                                        <CardContent>
+                                            <Typography  variant="h5" sx={{margin: '7px', marginTop: '30px'}}>
+                                                {city}
+                                            </Typography>
+                                            <Typography color="text.secondary" sx={{margin: '7px'}}>
+                                                zipcode: {zipcode}
+                                            </Typography>
+                                        </CardContent>
+                                    </Card>
+
+                                    {/* <Orders /> */}
                                 </Paper>
                             </Grid>
                             {/* Recent Deposits */}

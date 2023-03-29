@@ -35,7 +35,14 @@ function SignIn() {
             "user_password": password,
         }).then(res => {
             const user = res.data.user_data;
+            // localStorage.setItem('users', JSON.stringify(user[0]));
             localStorage.setItem('firstName', user[0].user_firstname);
+            localStorage.setItem('lastName', user[0].user_lastname);
+            localStorage.setItem('email', user[0].user_email);
+            localStorage.setItem('phone', user[0].user_phone);
+            localStorage.setItem('city', user[0].user_city);
+            localStorage.setItem('zipcode', user[0].user_zipcode);
+
         });
         setEmail('');
         setPassword('');

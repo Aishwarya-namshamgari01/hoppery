@@ -37,7 +37,7 @@ const SignUp = () => {
             "user_email": email,
             "user_phone": phone,
             "user_password": password,
-            "user_lastname": "ni",
+            "user_lastname": "Khan",
             "user_city": "Hyderabad",
             "user_zipcode": "500072"
         })
